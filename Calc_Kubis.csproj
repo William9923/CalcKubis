@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MemoryRmBtn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MemoryRmBtn.Designer.cs">
+      <DependentUpon>MemoryRmBtn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemorySaveBtn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MemorySaveBtn.Designer.cs">
+      <DependentUpon>MemorySaveBtn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OperatorBtn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OperatorBtn.Designer.cs">
+      <DependentUpon>OperatorBtn.cs</DependentUpon>
+    </Compile>
     <Compile Include="NumBtn.cs">
       <SubType>Component</SubType>
     </Compile>

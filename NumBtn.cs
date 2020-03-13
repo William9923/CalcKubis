@@ -31,6 +31,11 @@ namespace Calc_Kubis
             InitializeComponent();
         }
 
+        public void InitializeDesign()
+        {
+            this.Text = number.ToString();
+        }
+
         // getter
         public int GetNumber()
         {

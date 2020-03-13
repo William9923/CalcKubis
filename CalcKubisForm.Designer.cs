@@ -29,147 +29,265 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.numBtn0 = new Calc_Kubis.NumBtn(this.components);
-            this.numBtn9 = new Calc_Kubis.NumBtn(this.components);
-            this.numBtn8 = new Calc_Kubis.NumBtn(this.components);
-            this.numBtn7 = new Calc_Kubis.NumBtn(this.components);
-            this.numBtn6 = new Calc_Kubis.NumBtn(this.components);
-            this.numBtn5 = new Calc_Kubis.NumBtn(this.components);
-            this.numBtn4 = new Calc_Kubis.NumBtn(this.components);
-            this.numBtn3 = new Calc_Kubis.NumBtn(this.components);
-            this.numBtn2 = new Calc_Kubis.NumBtn(this.components);
-            this.numBtn1 = new Calc_Kubis.NumBtn(this.components);
+            this.ResultBox = new System.Windows.Forms.TextBox();
+            this.PowerBtn = new Calc_Kubis.OperatorBtn(this.components);
+            this.DivisorBtn = new Calc_Kubis.OperatorBtn(this.components);
+            this.MultiplyButton = new Calc_Kubis.OperatorBtn(this.components);
+            this.RootBtn = new Calc_Kubis.OperatorBtn(this.components);
+            this.PlusBtn = new Calc_Kubis.OperatorBtn(this.components);
+            this.MinusBtn = new Calc_Kubis.OperatorBtn(this.components);
+            this.msBtn = new Calc_Kubis.MemorySaveBtn(this.components);
+            this.mrBtn = new Calc_Kubis.MemoryRmBtn(this.components);
+            this.decBtn = new Calc_Kubis.NumBtn(this.components);
+            this.Btn0 = new Calc_Kubis.NumBtn(this.components);
+            this.ansBtn = new Calc_Kubis.NumBtn(this.components);
+            this.Btn3 = new Calc_Kubis.NumBtn(this.components);
+            this.Btn5 = new Calc_Kubis.NumBtn(this.components);
+            this.Btn6 = new Calc_Kubis.NumBtn(this.components);
+            this.Btn1 = new Calc_Kubis.NumBtn(this.components);
+            this.Btn2 = new Calc_Kubis.NumBtn(this.components);
+            this.Btn9 = new Calc_Kubis.NumBtn(this.components);
+            this.Btn4 = new Calc_Kubis.NumBtn(this.components);
+            this.Btn8 = new Calc_Kubis.NumBtn(this.components);
+            this.Btn7 = new Calc_Kubis.NumBtn(this.components);
             this.SuspendLayout();
             // 
-            // textBox1
+            // ResultBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(54, 110);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox1.Size = new System.Drawing.Size(353, 22);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.ResultBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResultBox.Location = new System.Drawing.Point(9, 38);
+            this.ResultBox.Name = "ResultBox";
+            this.ResultBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ResultBox.Size = new System.Drawing.Size(414, 61);
+            this.ResultBox.TabIndex = 12;
+            this.ResultBox.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
-            // numBtn0
+            // PowerBtn
             // 
-            this.numBtn0.Location = new System.Drawing.Point(190, 415);
-            this.numBtn0.Name = "numBtn0";
-            this.numBtn0.Size = new System.Drawing.Size(75, 23);
-            this.numBtn0.TabIndex = 19;
-            this.numBtn0.Text = "numBtn0";
-            this.numBtn0.UseVisualStyleBackColor = true;
-            this.numBtn0.Click += new System.EventHandler(this.numBtn0_Click);
+            this.PowerBtn.Location = new System.Drawing.Point(342, 202);
+            this.PowerBtn.Name = "PowerBtn";
+            this.PowerBtn.Size = new System.Drawing.Size(81, 88);
+            this.PowerBtn.TabIndex = 20;
+            this.PowerBtn.Text = "^";
+            this.PowerBtn.UseVisualStyleBackColor = true;
+            this.PowerBtn.Click += new System.EventHandler(this.PowerBtn_Click);
             // 
-            // numBtn9
+            // DivisorBtn
             // 
-            this.numBtn9.Location = new System.Drawing.Point(332, 212);
-            this.numBtn9.Name = "numBtn9";
-            this.numBtn9.Size = new System.Drawing.Size(75, 23);
-            this.numBtn9.TabIndex = 18;
-            this.numBtn9.Text = "numBtn9";
-            this.numBtn9.UseVisualStyleBackColor = true;
-            this.numBtn9.Click += new System.EventHandler(this.numBtn9_Click);
+            this.DivisorBtn.Location = new System.Drawing.Point(341, 296);
+            this.DivisorBtn.Name = "DivisorBtn";
+            this.DivisorBtn.Size = new System.Drawing.Size(81, 88);
+            this.DivisorBtn.TabIndex = 19;
+            this.DivisorBtn.Text = "÷";
+            this.DivisorBtn.UseVisualStyleBackColor = true;
+            this.DivisorBtn.Click += new System.EventHandler(this.DivisorBtn_Click);
             // 
-            // numBtn8
+            // MultiplyButton
             // 
-            this.numBtn8.Location = new System.Drawing.Point(190, 212);
-            this.numBtn8.Name = "numBtn8";
-            this.numBtn8.Size = new System.Drawing.Size(75, 23);
-            this.numBtn8.TabIndex = 17;
-            this.numBtn8.Text = "numBtn8";
-            this.numBtn8.UseVisualStyleBackColor = true;
-            this.numBtn8.Click += new System.EventHandler(this.numBtn8_Click);
+            this.MultiplyButton.Location = new System.Drawing.Point(341, 389);
+            this.MultiplyButton.Name = "MultiplyButton";
+            this.MultiplyButton.Size = new System.Drawing.Size(81, 88);
+            this.MultiplyButton.TabIndex = 18;
+            this.MultiplyButton.Text = "X";
+            this.MultiplyButton.UseVisualStyleBackColor = true;
             // 
-            // numBtn7
+            // RootBtn
             // 
-            this.numBtn7.Location = new System.Drawing.Point(54, 212);
-            this.numBtn7.Name = "numBtn7";
-            this.numBtn7.Size = new System.Drawing.Size(75, 23);
-            this.numBtn7.TabIndex = 16;
-            this.numBtn7.Text = "numBtn7";
-            this.numBtn7.UseVisualStyleBackColor = true;
-            this.numBtn7.Click += new System.EventHandler(this.numBtn7_Click);
+            this.RootBtn.Location = new System.Drawing.Point(254, 201);
+            this.RootBtn.Name = "RootBtn";
+            this.RootBtn.Size = new System.Drawing.Size(81, 88);
+            this.RootBtn.TabIndex = 17;
+            this.RootBtn.Text = "√";
+            this.RootBtn.UseVisualStyleBackColor = true;
+            this.RootBtn.Click += new System.EventHandler(this.RootBtn_Click);
             // 
-            // numBtn6
+            // PlusBtn
             // 
-            this.numBtn6.Location = new System.Drawing.Point(332, 277);
-            this.numBtn6.Name = "numBtn6";
-            this.numBtn6.Size = new System.Drawing.Size(75, 23);
-            this.numBtn6.TabIndex = 15;
-            this.numBtn6.Text = "numBtn6";
-            this.numBtn6.UseVisualStyleBackColor = true;
-            this.numBtn6.Click += new System.EventHandler(this.numBtn6_Click);
+            this.PlusBtn.Location = new System.Drawing.Point(254, 388);
+            this.PlusBtn.Name = "PlusBtn";
+            this.PlusBtn.Size = new System.Drawing.Size(81, 181);
+            this.PlusBtn.TabIndex = 16;
+            this.PlusBtn.Text = "+";
+            this.PlusBtn.UseVisualStyleBackColor = true;
+            this.PlusBtn.Click += new System.EventHandler(this.PlusBtn_Click);
             // 
-            // numBtn5
+            // MinusBtn
             // 
-            this.numBtn5.Location = new System.Drawing.Point(190, 277);
-            this.numBtn5.Name = "numBtn5";
-            this.numBtn5.Size = new System.Drawing.Size(75, 23);
-            this.numBtn5.TabIndex = 14;
-            this.numBtn5.Text = "numBtn5";
-            this.numBtn5.UseVisualStyleBackColor = true;
-            this.numBtn5.Click += new System.EventHandler(this.numBtn5_Click);
+            this.MinusBtn.Location = new System.Drawing.Point(254, 295);
+            this.MinusBtn.Name = "MinusBtn";
+            this.MinusBtn.Size = new System.Drawing.Size(81, 87);
+            this.MinusBtn.TabIndex = 15;
+            this.MinusBtn.Text = "-";
+            this.MinusBtn.UseVisualStyleBackColor = true;
+            this.MinusBtn.Click += new System.EventHandler(this.operatorBtn1_Click);
             // 
-            // numBtn4
+            // msBtn
             // 
-            this.numBtn4.Location = new System.Drawing.Point(54, 277);
-            this.numBtn4.Name = "numBtn4";
-            this.numBtn4.Size = new System.Drawing.Size(75, 23);
-            this.numBtn4.TabIndex = 13;
-            this.numBtn4.Text = "numBtn4";
-            this.numBtn4.UseVisualStyleBackColor = true;
-            this.numBtn4.Click += new System.EventHandler(this.numBtn4_Click);
+            this.msBtn.Location = new System.Drawing.Point(90, 108);
+            this.msBtn.Name = "msBtn";
+            this.msBtn.Size = new System.Drawing.Size(78, 87);
+            this.msBtn.TabIndex = 14;
+            this.msBtn.Text = "MC";
+            this.msBtn.UseVisualStyleBackColor = true;
             // 
-            // numBtn3
+            // mrBtn
             // 
-            this.numBtn3.Location = new System.Drawing.Point(332, 347);
-            this.numBtn3.Name = "numBtn3";
-            this.numBtn3.Size = new System.Drawing.Size(75, 23);
-            this.numBtn3.TabIndex = 12;
-            this.numBtn3.Text = "numBtn3";
-            this.numBtn3.UseVisualStyleBackColor = true;
-            this.numBtn3.Click += new System.EventHandler(this.numBtn3_Click);
+            this.mrBtn.Location = new System.Drawing.Point(10, 107);
+            this.mrBtn.Name = "mrBtn";
+            this.mrBtn.Size = new System.Drawing.Size(78, 88);
+            this.mrBtn.TabIndex = 13;
+            this.mrBtn.Text = "MR";
+            this.mrBtn.UseVisualStyleBackColor = true;
+            this.mrBtn.Click += new System.EventHandler(this.mrBtn_Click);
             // 
-            // numBtn2
+            // decBtn
             // 
-            this.numBtn2.Location = new System.Drawing.Point(190, 347);
-            this.numBtn2.Name = "numBtn2";
-            this.numBtn2.Size = new System.Drawing.Size(75, 23);
-            this.numBtn2.TabIndex = 11;
-            this.numBtn2.Text = "numBtn2";
-            this.numBtn2.UseVisualStyleBackColor = true;
-            this.numBtn2.Click += new System.EventHandler(this.numBtn2_Click);
+            this.decBtn.Location = new System.Drawing.Point(10, 483);
+            this.decBtn.Name = "decBtn";
+            this.decBtn.Size = new System.Drawing.Size(80, 88);
+            this.decBtn.TabIndex = 11;
+            this.decBtn.Text = ".";
+            this.decBtn.UseVisualStyleBackColor = true;
+            this.decBtn.Click += new System.EventHandler(this.numBtn12_Click);
             // 
-            // numBtn1
+            // Btn0
             // 
-            this.numBtn1.Location = new System.Drawing.Point(54, 347);
-            this.numBtn1.Name = "numBtn1";
-            this.numBtn1.Size = new System.Drawing.Size(75, 23);
-            this.numBtn1.TabIndex = 10;
-            this.numBtn1.Text = "numBtn1";
-            this.numBtn1.UseVisualStyleBackColor = true;
-            this.numBtn1.Click += new System.EventHandler(this.numBtn1_Click);
+            this.Btn0.Location = new System.Drawing.Point(91, 483);
+            this.Btn0.Name = "Btn0";
+            this.Btn0.Size = new System.Drawing.Size(80, 88);
+            this.Btn0.TabIndex = 0;
+            this.Btn0.Text = "0";
+            this.Btn0.UseVisualStyleBackColor = true;
+            this.Btn0.Click += new System.EventHandler(this.Btn0_Click);
+            // 
+            // ansBtn
+            // 
+            this.ansBtn.Location = new System.Drawing.Point(171, 483);
+            this.ansBtn.Name = "ansBtn";
+            this.ansBtn.Size = new System.Drawing.Size(80, 88);
+            this.ansBtn.TabIndex = 10;
+            this.ansBtn.Text = "Ans";
+            this.ansBtn.UseVisualStyleBackColor = true;
+            // 
+            // Btn3
+            // 
+            this.Btn3.Location = new System.Drawing.Point(170, 389);
+            this.Btn3.Name = "Btn3";
+            this.Btn3.Size = new System.Drawing.Size(80, 88);
+            this.Btn3.TabIndex = 3;
+            this.Btn3.Text = "3";
+            this.Btn3.UseVisualStyleBackColor = true;
+            this.Btn3.Click += new System.EventHandler(this.Btn3_Click);
+            // 
+            // Btn5
+            // 
+            this.Btn5.Location = new System.Drawing.Point(91, 295);
+            this.Btn5.Name = "Btn5";
+            this.Btn5.Size = new System.Drawing.Size(80, 88);
+            this.Btn5.TabIndex = 5;
+            this.Btn5.Text = "5";
+            this.Btn5.UseVisualStyleBackColor = true;
+            this.Btn5.Click += new System.EventHandler(this.Btn5_Click);
+            // 
+            // Btn6
+            // 
+            this.Btn6.Location = new System.Drawing.Point(171, 295);
+            this.Btn6.Name = "Btn6";
+            this.Btn6.Size = new System.Drawing.Size(80, 88);
+            this.Btn6.TabIndex = 6;
+            this.Btn6.Text = "6";
+            this.Btn6.UseVisualStyleBackColor = true;
+            this.Btn6.Click += new System.EventHandler(this.Btn6_Click);
+            // 
+            // Btn1
+            // 
+            this.Btn1.Location = new System.Drawing.Point(10, 389);
+            this.Btn1.Name = "Btn1";
+            this.Btn1.Size = new System.Drawing.Size(80, 88);
+            this.Btn1.TabIndex = 1;
+            this.Btn1.Text = "1";
+            this.Btn1.UseVisualStyleBackColor = true;
+            this.Btn1.Click += new System.EventHandler(this.Btn1_Click);
+            // 
+            // Btn2
+            // 
+            this.Btn2.Location = new System.Drawing.Point(91, 389);
+            this.Btn2.Name = "Btn2";
+            this.Btn2.Size = new System.Drawing.Size(80, 88);
+            this.Btn2.TabIndex = 2;
+            this.Btn2.Text = "2";
+            this.Btn2.UseVisualStyleBackColor = true;
+            this.Btn2.Click += new System.EventHandler(this.Btn2_Click);
+            // 
+            // Btn9
+            // 
+            this.Btn9.Location = new System.Drawing.Point(170, 201);
+            this.Btn9.Name = "Btn9";
+            this.Btn9.Size = new System.Drawing.Size(80, 88);
+            this.Btn9.TabIndex = 9;
+            this.Btn9.Text = "9";
+            this.Btn9.UseVisualStyleBackColor = true;
+            this.Btn9.Click += new System.EventHandler(this.Btn9_Click);
+            // 
+            // Btn4
+            // 
+            this.Btn4.Location = new System.Drawing.Point(10, 295);
+            this.Btn4.Name = "Btn4";
+            this.Btn4.Size = new System.Drawing.Size(80, 88);
+            this.Btn4.TabIndex = 4;
+            this.Btn4.Text = "4";
+            this.Btn4.UseVisualStyleBackColor = true;
+            this.Btn4.Click += new System.EventHandler(this.Btn4_Click);
+            // 
+            // Btn8
+            // 
+            this.Btn8.Location = new System.Drawing.Point(90, 201);
+            this.Btn8.Name = "Btn8";
+            this.Btn8.Size = new System.Drawing.Size(80, 88);
+            this.Btn8.TabIndex = 8;
+            this.Btn8.Text = "8";
+            this.Btn8.UseVisualStyleBackColor = true;
+            this.Btn8.Click += new System.EventHandler(this.Btn8_Click);
+            // 
+            // Btn7
+            // 
+            this.Btn7.Location = new System.Drawing.Point(10, 201);
+            this.Btn7.Name = "Btn7";
+            this.Btn7.Size = new System.Drawing.Size(80, 88);
+            this.Btn7.TabIndex = 7;
+            this.Btn7.Text = "7";
+            this.Btn7.UseVisualStyleBackColor = true;
+            this.Btn7.Click += new System.EventHandler(this.Btn7_Click);
             // 
             // CalcKubisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 450);
-            this.Controls.Add(this.numBtn0);
-            this.Controls.Add(this.numBtn9);
-            this.Controls.Add(this.numBtn8);
-            this.Controls.Add(this.numBtn7);
-            this.Controls.Add(this.numBtn6);
-            this.Controls.Add(this.numBtn5);
-            this.Controls.Add(this.numBtn4);
-            this.Controls.Add(this.numBtn3);
-            this.Controls.Add(this.numBtn2);
-            this.Controls.Add(this.numBtn1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(435, 577);
+            this.Controls.Add(this.PowerBtn);
+            this.Controls.Add(this.DivisorBtn);
+            this.Controls.Add(this.MultiplyButton);
+            this.Controls.Add(this.RootBtn);
+            this.Controls.Add(this.PlusBtn);
+            this.Controls.Add(this.MinusBtn);
+            this.Controls.Add(this.msBtn);
+            this.Controls.Add(this.mrBtn);
+            this.Controls.Add(this.ResultBox);
+            this.Controls.Add(this.decBtn);
+            this.Controls.Add(this.Btn0);
+            this.Controls.Add(this.ansBtn);
+            this.Controls.Add(this.Btn3);
+            this.Controls.Add(this.Btn5);
+            this.Controls.Add(this.Btn6);
+            this.Controls.Add(this.Btn1);
+            this.Controls.Add(this.Btn2);
+            this.Controls.Add(this.Btn9);
+            this.Controls.Add(this.Btn4);
+            this.Controls.Add(this.Btn8);
+            this.Controls.Add(this.Btn7);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CalcKubisForm";
-            this.Text = "CalcApp";
+            this.Text = " Calculator Kubis";
             this.Load += new System.EventHandler(this.CalcKubisForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -177,17 +295,28 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
-        private NumBtn numBtn1;
-        private NumBtn numBtn2;
-        private NumBtn numBtn3;
-        private NumBtn numBtn4;
-        private NumBtn numBtn5;
-        private NumBtn numBtn6;
-        private NumBtn numBtn7;
-        private NumBtn numBtn8;
-        private NumBtn numBtn9;
-        private NumBtn numBtn0;
+
+        private NumBtn Btn7;
+        private NumBtn Btn8;
+        private NumBtn Btn4;
+        private NumBtn Btn9;
+        private NumBtn Btn2;
+        private NumBtn Btn1;
+        private NumBtn Btn6;
+        private NumBtn Btn5;
+        private NumBtn Btn3;
+        private NumBtn ansBtn;
+        private NumBtn Btn0;
+        private NumBtn decBtn;
+        private System.Windows.Forms.TextBox ResultBox;
+        private MemoryRmBtn mrBtn;
+        private MemorySaveBtn msBtn;
+        private OperatorBtn MinusBtn;
+        private OperatorBtn PlusBtn;
+        private OperatorBtn RootBtn;
+        private OperatorBtn MultiplyButton;
+        private OperatorBtn DivisorBtn;
+        private OperatorBtn PowerBtn;
     }
 }
 

@@ -22,105 +22,135 @@ namespace Calc_Kubis
 
         private void CalcKubisForm_Load(object sender, EventArgs e)
         {
-            expr = "";
+            // Initialize Number Button
+            Btn0 = new NumBtn(0);
+            Btn1 = new NumBtn(1);
+            Btn2 = new NumBtn(2);
+            Btn3 = new NumBtn(3);
+            Btn4 = new NumBtn(4);
+            Btn5 = new NumBtn(5);
+            Btn6 = new NumBtn(6);
+            Btn7 = new NumBtn(7);
+            Btn8 = new NumBtn(8);
+            Btn9 = new NumBtn(9);
 
-            numBtn1.Text = "1";
-            numBtn1.SetNumber(1);
-
-            numBtn2.Text = "2";
-            numBtn2.SetNumber(2);
-
-            numBtn3.Text = "3";
-            numBtn3.SetNumber(3);
-
-            numBtn4.Text = "4";
-            numBtn4.SetNumber(4);
-
-            numBtn5.Text = "5";
-            numBtn5.SetNumber(5);
-
-            numBtn6.Text = "6";
-            numBtn6.SetNumber(6);
-
-            numBtn7.Text = "7";
-            numBtn7.SetNumber(7);
-
-            numBtn8.Text = "8";
-            numBtn8.SetNumber(8);
-
-            numBtn9.Text = "9";
-            numBtn9.SetNumber(9);
-
-            numBtn0.Text = "0";
-            numBtn0.SetNumber(0);
-
+            // Initialize Operator Button
+            PlusBtn = new OperatorBtn("+");
+            MinusBtn = new OperatorBtn("-");
+            RootBtn = new OperatorBtn("√");
+            DivisorBtn = new OperatorBtn("÷");
+            MultiplyButton = new OperatorBtn("X");
+            PowerBtn = new OperatorBtn("^");
         }
 
+        private void ChangeText()
+        {
+            ResultBox.Text = expr;
+        }
 
+        private void Btn7_Click(object sender, EventArgs e)
+        {
+            expr += Btn7.GetNumber();
+            ChangeText();
+        }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void numBtn12_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void numBtn9_Click(object sender, EventArgs e)
+        private void Btn8_Click(object sender, EventArgs e)
         {
-            expr += numBtn9.GetNumber().ToString();
-            textBox1.Text = expr;
+            expr += Btn8.GetNumber();
+            ChangeText();
         }
 
-        private void numBtn0_Click(object sender, EventArgs e)
+        private void Btn4_Click(object sender, EventArgs e)
         {
-            expr += numBtn0.GetNumber().ToString();
-            textBox1.Text = expr;
+            expr += Btn4.GetNumber();
+            ChangeText();
         }
 
-        private void numBtn1_Click(object sender, EventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
-            expr += numBtn1.GetNumber().ToString();
-            textBox1.Text = expr;
+
         }
 
-        private void numBtn2_Click(object sender, EventArgs e)
+        private void mrBtn_Click(object sender, EventArgs e)
         {
-            expr += numBtn2.GetNumber().ToString();
-            textBox1.Text = expr;
+
         }
 
-        private void numBtn3_Click(object sender, EventArgs e)
+        private void PlusBtn_Click(object sender, EventArgs e)
         {
-            expr += numBtn3.GetNumber().ToString();
-            textBox1.Text = expr;
+            expr += PlusBtn.GetOperator();
+            ChangeText();
         }
 
-        private void numBtn4_Click(object sender, EventArgs e)
+        private void operatorBtn1_Click(object sender, EventArgs e)
         {
-            expr += numBtn4.GetNumber().ToString();
-            textBox1.Text = expr;
+            expr += MinusBtn.GetOperator();
+            ChangeText();
         }
 
-        private void numBtn5_Click(object sender, EventArgs e)
+        private void Btn0_Click(object sender, EventArgs e)
         {
-            expr += numBtn5.GetNumber().ToString();
-            textBox1.Text = expr;
+            expr += Btn0.GetNumber();
+            ChangeText();
         }
 
-        private void numBtn6_Click(object sender, EventArgs e)
+        private void Btn1_Click(object sender, EventArgs e)
         {
-            expr += numBtn6.GetNumber().ToString();
-            textBox1.Text = expr;
+            expr += Btn1.GetNumber();
+            ChangeText();
         }
 
-        private void numBtn7_Click(object sender, EventArgs e)
+        private void Btn2_Click(object sender, EventArgs e)
         {
-            expr += numBtn7.GetNumber().ToString();
-            textBox1.Text = expr;
+            expr += Btn2.GetNumber();
+            ChangeText();
         }
 
-        private void numBtn8_Click(object sender, EventArgs e)
+        private void Btn3_Click(object sender, EventArgs e)
         {
-            expr += numBtn8.GetNumber().ToString();
-            textBox1.Text = expr;
+            expr += Btn3.GetNumber();
+            ChangeText();
+        }
+
+        private void Btn5_Click(object sender, EventArgs e)
+        {
+            expr += Btn5.GetNumber();
+            ChangeText();
+        }
+
+        private void Btn6_Click(object sender, EventArgs e)
+        {
+            expr += Btn6.GetNumber();
+            ChangeText();
+        }
+
+        private void Btn9_Click(object sender, EventArgs e)
+        {
+            expr += Btn9.GetNumber();
+            ChangeText();
+        }
+
+        private void RootBtn_Click(object sender, EventArgs e)
+        {
+            expr += RootBtn.GetOperator();
+            ChangeText();
+        }
+
+        private void PowerBtn_Click(object sender, EventArgs e)
+        {
+            expr += PowerBtn.GetOperator();
+            ChangeText();
+        }
+
+        private void DivisorBtn_Click(object sender, EventArgs e)
+        {
+            expr += DivisorBtn.GetOperator();
+            ChangeText();
         }
     }
 }
