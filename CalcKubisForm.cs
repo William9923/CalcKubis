@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Calc_Kubis
@@ -18,10 +11,6 @@ namespace Calc_Kubis
         public CalcKubisForm()
         {
             InitializeComponent();
-        }
-
-        private void CalcKubisForm_Load(object sender, EventArgs e)
-        {
             // Initialize Number Button
             Btn0 = new NumBtn(0);
             Btn1 = new NumBtn(1);
@@ -41,6 +30,11 @@ namespace Calc_Kubis
             DivisorBtn = new OperatorBtn("÷");
             MultiplyButton = new OperatorBtn("X");
             PowerBtn = new OperatorBtn("^");
+        }
+
+        private void CalcKubisForm_Load(object sender, EventArgs e)
+        {
+            
         }
 
         private void ChangeText()

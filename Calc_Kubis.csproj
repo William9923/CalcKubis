@@ -46,6 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryExpression.cs" />
+    <Compile Include="AddExpression.cs" />
+    <Compile Include="AddOpr.cs" />
+    <Compile Include="PowerOpr.cs" />
+    <Compile Include="MultOpr.cs" />
+    <Compile Include="DivOpr.cs" />
+    <Compile Include="PowerExpression.cs" />
+    <Compile Include="MultExpression.cs" />
+    <Compile Include="DivExpression.cs" />
+    <Compile Include="UnaryExpression.cs" />
+    <Compile Include="TerminalExpression.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="Evaluator.cs" />
+    <Compile Include="Expression.cs" />
+    <Compile Include="Opr.cs" />
     <Compile Include="MemoryRmBtn.cs">
       <SubType>Component</SubType>
     </Compile>

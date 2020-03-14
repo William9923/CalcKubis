@@ -57,9 +57,10 @@
             this.ResultBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResultBox.Location = new System.Drawing.Point(9, 38);
             this.ResultBox.Name = "ResultBox";
-            this.ResultBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ResultBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ResultBox.Size = new System.Drawing.Size(414, 61);
             this.ResultBox.TabIndex = 12;
+            this.ResultBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ResultBox.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // PowerBtn
@@ -286,6 +287,7 @@
             this.Controls.Add(this.Btn8);
             this.Controls.Add(this.Btn7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "CalcKubisForm";
             this.Text = " Calculator Kubis";
             this.Load += new System.EventHandler(this.CalcKubisForm_Load);
