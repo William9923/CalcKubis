@@ -49,6 +49,18 @@
     <Compile Include="BinaryExpression.cs" />
     <Compile Include="AddExpression.cs" />
     <Compile Include="AddOpr.cs" />
+    <Compile Include="ParenthesesOpr.cs" />
+    <Compile Include="DataCollector.cs" />
+    <Compile Include="NegativeOpr.cs" />
+    <Compile Include="NegativeExpression.cs" />
+    <Compile Include="RootOpr.cs" />
+    <Compile Include="RootExpression.cs" />
+    <Compile Include="EvaluatorBtn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EvaluatorBtn.Designer.cs">
+      <DependentUpon>EvaluatorBtn.cs</DependentUpon>
+    </Compile>
     <Compile Include="PowerOpr.cs" />
     <Compile Include="MultOpr.cs" />
     <Compile Include="DivOpr.cs" />
@@ -85,16 +97,16 @@
     <Compile Include="NumBtn.Designer.cs">
       <DependentUpon>NumBtn.cs</DependentUpon>
     </Compile>
-    <Compile Include="CalcKubisForm.cs">
+    <Compile Include="Calculator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CalcKubisForm.Designer.cs">
-      <DependentUpon>CalcKubisForm.cs</DependentUpon>
+    <Compile Include="Calculator.Designer.cs">
+      <DependentUpon>Calculator.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CalcKubisForm.resx">
-      <DependentUpon>CalcKubisForm.cs</DependentUpon>
+    <EmbeddedResource Include="Calculator.resx">
+      <DependentUpon>Calculator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

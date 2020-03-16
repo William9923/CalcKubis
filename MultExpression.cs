@@ -10,9 +10,9 @@ namespace Calc_Kubis
     {
         public MultExpression(Expression x, Expression y) : base(x, y) { }
 
-        public override double solve()
+        public override double Solve()
         {
-            return this.x.solve() * this.y.solve();
+            return this.x.Solve() * this.y.Solve();
         }
     }
 }

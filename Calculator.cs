@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace Calc_Kubis
 {
-    public partial class CalcKubisForm : Form
+    public partial class Calculator : Form
     {
 
         string expr;
 
-        public CalcKubisForm()
+        public Calculator()
         {
             InitializeComponent();
             // Initialize Number Button
@@ -28,8 +28,14 @@ namespace Calc_Kubis
             MinusBtn = new OperatorBtn("-");
             RootBtn = new OperatorBtn("√");
             DivisorBtn = new OperatorBtn("÷");
-            MultiplyButton = new OperatorBtn("X");
+            MultBtn = new OperatorBtn("x");
             PowerBtn = new OperatorBtn("^");
+            DecBtn = new OperatorBtn(".");
+            LeftParenthesesBtn = new OperatorBtn("(");
+            RightParenthesesBtn = new OperatorBtn(")");
+
+            // Initialize Evaluator Button
+            EvalBtn = new EvaluatorBtn();
         }
 
         private void CalcKubisForm_Load(object sender, EventArgs e)
@@ -39,7 +45,7 @@ namespace Calc_Kubis
 
         private void ChangeText()
         {
-            ResultBox.Text = expr;
+            ResultBox.Text = expr.Replace(" ","");
         }
 
         private void Btn7_Click(object sender, EventArgs e)
@@ -50,7 +56,6 @@ namespace Calc_Kubis
 
         private void numBtn12_Click(object sender, EventArgs e)
         {
-
         }
 
         private void Btn8_Click(object sender, EventArgs e)
@@ -77,13 +82,13 @@ namespace Calc_Kubis
 
         private void PlusBtn_Click(object sender, EventArgs e)
         {
-            expr += PlusBtn.GetOperator();
+            expr += " " + PlusBtn.GetOperator() + " ";
             ChangeText();
         }
 
         private void operatorBtn1_Click(object sender, EventArgs e)
         {
-            expr += MinusBtn.GetOperator();
+            expr += " " + MinusBtn.GetOperator() + " ";
             ChangeText();
         }
 
@@ -131,19 +136,62 @@ namespace Calc_Kubis
 
         private void RootBtn_Click(object sender, EventArgs e)
         {
-            expr += RootBtn.GetOperator();
+            expr += RootBtn.GetOperator() + " ";
             ChangeText();
         }
 
         private void PowerBtn_Click(object sender, EventArgs e)
         {
-            expr += PowerBtn.GetOperator();
+            expr += " " + PowerBtn.GetOperator() + " ";
             ChangeText();
         }
 
         private void DivisorBtn_Click(object sender, EventArgs e)
         {
-            expr += DivisorBtn.GetOperator();
+            expr += " " + DivisorBtn.GetOperator() + " ";
+            ChangeText();
+        }
+
+        private void MultiplyButton_Click(object sender, EventArgs e)
+        {
+            expr += " " + MultBtn.GetOperator() + " ";
+            ChangeText();
+        }
+
+        private void DecBtn_Click(object sender, EventArgs e)
+        {
+            expr += DecBtn.GetOperator();
+            ChangeText();
+        }
+
+        private void EvalBtn_Click(object sender, EventArgs e)
+        {
+            if (expr.Equals(""))
+            {
+                MessageBox.Show("Expression Empty");
+            }
+            else
+            {
+                expr = EvalBtn.GetResultEvaluation(this.expr).ToString();
+                ChangeText();
+            }
+        }
+
+        private void LeftParenthesesBtn_Click(object sender, EventArgs e)
+        {
+            expr +=  LeftParenthesesBtn.GetOperator() +  " " ;
+            ChangeText();
+        }
+
+        private void RightParenthesesBtn_Click(object sender, EventArgs e)
+        {
+            expr +=  " " + RightParenthesesBtn.GetOperator();
+            ChangeText();
+        }
+
+        private void ansBtn_Click(object sender, EventArgs e)
+        {
+            expr += "";
             ChangeText();
         }
     }

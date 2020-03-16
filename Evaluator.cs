@@ -6,138 +6,183 @@ using System.Threading.Tasks;
 
 namespace Calc_Kubis
 {
-    using System;
-    using System.Collections.Generic;
     class Evaluator
     {
         protected Parser parser;
+        protected bool expectOperand;
 
         public Evaluator(string expr)
         {
             this.parser = new Parser(expr);
-            Console.WriteLine(this.parser.GetParsedExpr());
+            this.expectOperand = true;
         }
 
-        // encapsulate
         public Expression Evaluate()
         {
-            Queue<Expression> numQueue = InitNumQueue();
-            Queue<Opr> oprQueue = InitOprQueue();
-            Stack<Expression> numStack = new Stack<Expression>();
+            string[] tokenList = parser.GetParseResult();
+            Stack<Expression> exprStack = new Stack<Expression>();
             Stack<Opr> oprStack = new Stack<Opr>();
-            Expression exprHolder = numQueue.Dequeue();
-            Opr oprHolder = new AddOpr();
-            bool change = true;
-            bool leftOut = false;
+            double numHolder;
+            Opr oprHolder;
 
-            numStack.Push(exprHolder);
-            while (oprQueue.Count != 0 || leftOut)
+            foreach (string token in tokenList)
             {
-                // PrintNumQueue(numQueue);
-                // PrintOprQueue(oprQueue);
-                if (change)
+                if (Parser.CheckOperand(token))
                 {
-                    oprHolder = oprQueue.Dequeue();
-                    exprHolder = numQueue.Dequeue();
-                    leftOut = true;
-                    // PrintEvaluatorState(oprHolder, exprHolder, "Dequeue");
-                }
+                    CheckStateOperand();
+                    numHolder = Double.Parse(token);
+                    exprStack.Push(new TerminalExpression(numHolder));
+                    ChangeState();
 
-                if (oprStack.Count != 0 && oprHolder.GetOprPred() < oprStack.Peek().GetOprPred())
+                }
+                else if (Parser.CheckUnaryOperator(token))
                 {
-                    change = false;
-                    Opr operate = oprStack.Pop();
-                    Expression e2 = numStack.Pop(); Expression e1 = numStack.Pop();
-                    // PrintEvaluationState(operate, e1, e2);
-                    switch (operate.Show())
+                    CheckStateOperand();
+                    oprStack.Push(CreateOpr(token));
+
+                }
+                else if (Parser.CheckBinaryOperator(token))
+                {
+                    CheckStateOperator();
+                    oprHolder = CreateOpr(token);
+                    while (oprStack.Count != 0 && oprHolder.GetOprPred() <= oprStack.Peek().GetOprPred())
                     {
-                        case "x": numStack.Push(new MultExpression(e1, e2)); break;
-                        case "+": numStack.Push(new AddExpression(e1, e2)); break;
-                        case "^": numStack.Push(new PowerExpression(e1, e2)); break;
-                        case "÷": numStack.Push(new DivExpression(e1, e2)); break;
+                        Opr outOpr = oprStack.Pop();
+                        CreateExpr(outOpr, ref exprStack);
+                    }
+                    oprStack.Push(oprHolder);
+                    ChangeState();
+
+                }
+                else if (Parser.CheckParentheses(token))
+                {
+                    switch (token)
+                    {
+                        case "(":
+                            CheckStateOperand();
+                            oprStack.Push(CreateOpr(token));
+                            break;
+                        case ")":
+                            CheckStateOperator();
+                            while (oprStack.Count != 0 && oprStack.Peek().Show() != "(")
+                            {
+                                oprHolder = oprStack.Pop();
+                                CreateExpr(oprHolder, ref exprStack);
+                            }
+                            if (oprStack.Peek().Show() == "(")
+                            {
+                                oprStack.Pop();
+                            }
+                            else
+                            {
+                                throw new System.ArgumentException();
+                            }
+                            break;
                     }
                 }
                 else
                 {
-                    // PrintEvaluatorState(oprHolder, exprHolder, "Pushing");
-                    change = true; leftOut = false;
-                    oprStack.Push(oprHolder);
-                    numStack.Push(exprHolder);
+                    Console.WriteLine(token);
+                     throw new System.ArgumentException();
                 }
             }
-
-            while (oprStack.Count != 0)
+            CheckStateOperator();
+            // Finishing Evaluation Process
+            while (oprStack.Count != 0 && exprStack.Count != 0)   // evaluate all leftie
             {
                 oprHolder = oprStack.Pop();
-                Expression e2 = numStack.Pop(); Expression e1 = numStack.Pop();
-                // PrintEvaluationState(oprHolder, e1, e2);
-                switch (oprHolder.Show())
-                {
-                    case "x": numStack.Push(new MultExpression(e1, e2)); break;
-                    case "+": numStack.Push(new AddExpression(e1, e2)); break;
-                    case "^": numStack.Push(new PowerExpression(e1, e2)); break;
-                    case "÷": numStack.Push(new DivExpression(e1, e2)); break;
-                }
+                CreateExpr(oprHolder, ref exprStack);
             }
-            return numStack.Pop();
-        }
 
-        // Initialize Function
-        private Queue<Expression> InitNumQueue()
-        {
-            List<Expression> numList = new List<Expression>();
-            List<Opr> oprList = new List<Opr>();
-            parser.Parse(ref numList, ref oprList);
-            return new Queue<Expression>(numList);
-        }
-
-        private Queue<Opr> InitOprQueue()
-        {
-            List<Opr> oprList = new List<Opr>();
-            List<Expression> numList = new List<Expression>();
-            parser.Parse(ref numList, ref oprList);
-            return new Queue<Opr>(oprList);
-        }
-
-        // debugging function
-        private static void PrintNumQueue(Queue<Expression> q)
-        {
-            Console.Write("Numeric : [");
-            List<Expression> list = new List<Expression>(q);
-            foreach (Expression e in list)
+            if (oprStack.Count > 0 || exprStack.Count > 1)
             {
-                Console.Write(e.solve());
-                Console.Write(",");
+                throw new System.ArgumentException();
             }
-            Console.WriteLine("]");
+            return exprStack.Pop();
         }
 
-        // debugging function
-        private static void PrintOprQueue(Queue<Opr> q)
+        private static Opr CreateOpr(string exe)
         {
-            Console.Write("Operator : [");
-            List<Opr> list = new List<Opr>(q);
-            foreach (Opr e in list)
+            switch (exe)
             {
-                Console.Write(e.Show());
-                Console.Write(",");
+                case "+": return new AddOpr(); break;
+                case "-": return new NegativeOpr(); break;
+                case "x": return new MultOpr(); break;
+                case "÷": return new DivOpr(); break;
+                case "^": return new PowerOpr(); break;
+                case "√": return new RootOpr(); break;
+                case "(": return new ParenthesesOpr("("); break;
+                case ")": return new ParenthesesOpr(")"); break;
+                default: throw new System.ArgumentException();
             }
-            Console.WriteLine("]");
         }
 
-        // debugging function
-        private static void PrintEvaluatorState(Opr opr, Expression expr, string state)
+        // Middle-ware function
+        private static void CreateExpr(Opr operation, ref Stack<Expression> exprStack)
+        {
+            Expression ex2 = exprStack.Pop();
+            Expression ex1;
+            switch (operation.Show())
+            {
+                case "x":
+                    ex1 = exprStack.Pop();
+                    exprStack.Push(new MultExpression(ex1, ex2)); break;
+                case "+":
+                    ex1 = exprStack.Pop();
+                    exprStack.Push(new AddExpression(ex1, ex2)); break;
+                case "^":
+                    ex1 = exprStack.Pop();
+                    exprStack.Push(new PowerExpression(ex1, ex2)); break;
+                case "÷":
+                    ex1 = exprStack.Pop();
+                    exprStack.Push(new DivExpression(ex1, ex2)); break;
+                case "-":
+                    exprStack.Push(new NegativeExpression(ex2)); break;
+                case "√":
+                    exprStack.Push(new RootExpression(ex2)); break;
+                default:
+                    throw new System.ArgumentException();
+            }
+        }
+
+        private void CheckStateOperand()
+        {
+            if (!this.expectOperand)
+            {
+                throw new System.ArgumentException();
+            }
+        }
+
+        private void CheckStateOperator()
+        {
+            if (this.expectOperand)
+            {
+                throw new System.ArgumentException();
+            }
+        }
+
+        private void ChangeState()
+        {
+            this.expectOperand = !expectOperand;
+        }
+
+        // Debugging function
+        private static void PrintOperatorState(Opr opr, string state)
         {
             Console.WriteLine(state + ":");
             Console.WriteLine("Operator:" + opr.Show());
-            Console.WriteLine("Number:" + expr.solve());
         }
 
-        // debugging function
+        private static void PrintExpressionState(Expression expr, string state)
+        {
+            Console.WriteLine(state + ":");
+            Console.WriteLine("Expression:" + expr.Solve());
+        }
+
         private static void PrintEvaluationState(Opr opr, Expression expr1, Expression expr2)
         {
-            Console.WriteLine("Operation:");
-            Console.WriteLine(expr1.solve() + opr.Show() + expr2.solve());
+            Console.Write("Operation State: ");
+            Console.WriteLine(expr1.Solve() + opr.Show() + expr2.Solve());
         }
     }
 }

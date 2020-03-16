@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calc_Kubis
 {
-    abstract class Expression
+    class DataCollector
     {
-        public abstract double Solve();
     }
 }

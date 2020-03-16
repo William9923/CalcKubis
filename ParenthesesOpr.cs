@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Calc_Kubis
 {
-    abstract class Expression
+    class ParenthesesOpr : Opr
     {
-        public abstract double Solve();
+        public ParenthesesOpr(string s) : base(0, s) { }
     }
 }

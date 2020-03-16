@@ -16,7 +16,7 @@ namespace Calc_Kubis
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CalcKubisForm());
+            Application.Run(new Calculator());
         }
     }
 }

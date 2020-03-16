@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Calc_Kubis
 {
-    class PowerExpression : BinaryExpression
+    class NegativeExpression : UnaryExpression
     {
-        public PowerExpression(Expression x, Expression y) : base(x, y) { }
+        public NegativeExpression(Expression x) : base(x) { }
 
         public override double Solve()
         {
-            return Math.Pow(this.x.Solve(), this.y.Solve());
+            return this.x.Solve() * -1;
         }
     }
 }

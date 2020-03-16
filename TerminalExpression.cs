@@ -20,7 +20,7 @@ namespace Calc_Kubis
             this.x = x;
         }
 
-        public override double solve()
+        public override double Solve()
         {
             return x;
         }

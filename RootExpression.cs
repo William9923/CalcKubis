@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 
 namespace Calc_Kubis
 {
-    class DivExpression : BinaryExpression
+    class RootExpression : UnaryExpression
     {
-        public DivExpression(Expression x, Expression y) : base(x, y) { }
+        public RootExpression(Expression x) : base(x) { }
 
         public override double Solve()
         {
-
-            if (this.y.Solve() == 0.0)
+            if (this.x.Solve() < 0)
             {
                 throw new System.ArgumentException();
             }
-            return this.x.Solve() / this.y.Solve();
+            return Math.Pow(this.x.Solve(), 0.5);
         }
     }
 }

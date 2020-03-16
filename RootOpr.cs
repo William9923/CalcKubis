@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Calc_Kubis
 {
-    abstract class Expression
+    class RootOpr : Opr
     {
-        public abstract double Solve();
+        public RootOpr() : base(4, "√") { }
     }
 }
