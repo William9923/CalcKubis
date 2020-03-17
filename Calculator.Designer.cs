@@ -30,6 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.ResultBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BackSpaceBtn = new System.Windows.Forms.Button();
+            this.ClearBtn = new System.Windows.Forms.Button();
+            this.RightParenthesesBtn = new Calc_Kubis.OperatorBtn(this.components);
+            this.LeftParenthesesBtn = new Calc_Kubis.OperatorBtn(this.components);
+            this.EvalBtn = new Calc_Kubis.EvaluatorBtn(this.components);
+            this.DecBtn = new Calc_Kubis.OperatorBtn(this.components);
             this.PowerBtn = new Calc_Kubis.OperatorBtn(this.components);
             this.DivisorBtn = new Calc_Kubis.OperatorBtn(this.components);
             this.MultBtn = new Calc_Kubis.OperatorBtn(this.components);
@@ -49,27 +56,94 @@
             this.Btn4 = new Calc_Kubis.NumBtn(this.components);
             this.Btn8 = new Calc_Kubis.NumBtn(this.components);
             this.Btn7 = new Calc_Kubis.NumBtn(this.components);
-            this.DecBtn = new Calc_Kubis.OperatorBtn(this.components);
-            this.EvalBtn = new Calc_Kubis.EvaluatorBtn(this.components);
-            this.LeftParenthesesBtn = new Calc_Kubis.OperatorBtn(this.components);
-            this.RightParenthesesBtn = new Calc_Kubis.OperatorBtn(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ResultBox
             // 
             this.ResultBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResultBox.Location = new System.Drawing.Point(9, 38);
+            this.ResultBox.MaxLength = 20;
             this.ResultBox.Name = "ResultBox";
             this.ResultBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ResultBox.Size = new System.Drawing.Size(501, 61);
+            this.ResultBox.Size = new System.Drawing.Size(415, 61);
             this.ResultBox.TabIndex = 12;
             this.ResultBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ResultBox.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(405, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(19, 25);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "-";
+            // 
+            // BackSpaceBtn
+            // 
+            this.BackSpaceBtn.Location = new System.Drawing.Point(256, 109);
+            this.BackSpaceBtn.Name = "BackSpaceBtn";
+            this.BackSpaceBtn.Size = new System.Drawing.Size(81, 88);
+            this.BackSpaceBtn.TabIndex = 26;
+            this.BackSpaceBtn.Text = "CE";
+            this.BackSpaceBtn.UseVisualStyleBackColor = true;
+            this.BackSpaceBtn.Click += new System.EventHandler(this.BackSpaceBtn_Click);
+            // 
+            // ClearBtn
+            // 
+            this.ClearBtn.Location = new System.Drawing.Point(343, 109);
+            this.ClearBtn.Name = "ClearBtn";
+            this.ClearBtn.Size = new System.Drawing.Size(81, 88);
+            this.ClearBtn.TabIndex = 27;
+            this.ClearBtn.Text = "C";
+            this.ClearBtn.UseVisualStyleBackColor = true;
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
+            // 
+            // RightParenthesesBtn
+            // 
+            this.RightParenthesesBtn.Cursor = System.Windows.Forms.Cursors.No;
+            this.RightParenthesesBtn.Location = new System.Drawing.Point(90, 109);
+            this.RightParenthesesBtn.Name = "RightParenthesesBtn";
+            this.RightParenthesesBtn.Size = new System.Drawing.Size(81, 88);
+            this.RightParenthesesBtn.TabIndex = 24;
+            this.RightParenthesesBtn.Text = ")";
+            this.RightParenthesesBtn.UseVisualStyleBackColor = true;
+            this.RightParenthesesBtn.Click += new System.EventHandler(this.RightParenthesesBtn_Click);
+            // 
+            // LeftParenthesesBtn
+            // 
+            this.LeftParenthesesBtn.Location = new System.Drawing.Point(9, 109);
+            this.LeftParenthesesBtn.Name = "LeftParenthesesBtn";
+            this.LeftParenthesesBtn.Size = new System.Drawing.Size(81, 88);
+            this.LeftParenthesesBtn.TabIndex = 23;
+            this.LeftParenthesesBtn.Text = "(";
+            this.LeftParenthesesBtn.UseVisualStyleBackColor = true;
+            this.LeftParenthesesBtn.Click += new System.EventHandler(this.LeftParenthesesBtn_Click);
+            // 
+            // EvalBtn
+            // 
+            this.EvalBtn.Location = new System.Drawing.Point(342, 481);
+            this.EvalBtn.Name = "EvalBtn";
+            this.EvalBtn.Size = new System.Drawing.Size(82, 91);
+            this.EvalBtn.TabIndex = 22;
+            this.EvalBtn.Text = "=";
+            this.EvalBtn.UseVisualStyleBackColor = true;
+            this.EvalBtn.Click += new System.EventHandler(this.EvalBtn_Click);
+            // 
+            // DecBtn
+            // 
+            this.DecBtn.Location = new System.Drawing.Point(10, 483);
+            this.DecBtn.Name = "DecBtn";
+            this.DecBtn.Size = new System.Drawing.Size(78, 88);
+            this.DecBtn.TabIndex = 21;
+            this.DecBtn.Text = ".";
+            this.DecBtn.UseVisualStyleBackColor = true;
+            this.DecBtn.Click += new System.EventHandler(this.DecBtn_Click);
+            // 
             // PowerBtn
             // 
-            this.PowerBtn.Location = new System.Drawing.Point(429, 202);
+            this.PowerBtn.Location = new System.Drawing.Point(255, 204);
             this.PowerBtn.Name = "PowerBtn";
             this.PowerBtn.Size = new System.Drawing.Size(81, 88);
             this.PowerBtn.TabIndex = 20;
@@ -79,7 +153,7 @@
             // 
             // DivisorBtn
             // 
-            this.DivisorBtn.Location = new System.Drawing.Point(429, 294);
+            this.DivisorBtn.Location = new System.Drawing.Point(255, 391);
             this.DivisorBtn.Name = "DivisorBtn";
             this.DivisorBtn.Size = new System.Drawing.Size(81, 88);
             this.DivisorBtn.TabIndex = 19;
@@ -89,7 +163,7 @@
             // 
             // MultBtn
             // 
-            this.MultBtn.Location = new System.Drawing.Point(429, 390);
+            this.MultBtn.Location = new System.Drawing.Point(343, 391);
             this.MultBtn.Name = "MultBtn";
             this.MultBtn.Size = new System.Drawing.Size(81, 88);
             this.MultBtn.TabIndex = 18;
@@ -99,7 +173,7 @@
             // 
             // RootBtn
             // 
-            this.RootBtn.Location = new System.Drawing.Point(342, 203);
+            this.RootBtn.Location = new System.Drawing.Point(171, 109);
             this.RootBtn.Name = "RootBtn";
             this.RootBtn.Size = new System.Drawing.Size(81, 88);
             this.RootBtn.TabIndex = 17;
@@ -109,9 +183,9 @@
             // 
             // PlusBtn
             // 
-            this.PlusBtn.Location = new System.Drawing.Point(342, 390);
+            this.PlusBtn.Location = new System.Drawing.Point(256, 483);
             this.PlusBtn.Name = "PlusBtn";
-            this.PlusBtn.Size = new System.Drawing.Size(81, 181);
+            this.PlusBtn.Size = new System.Drawing.Size(81, 89);
             this.PlusBtn.TabIndex = 16;
             this.PlusBtn.Text = "+";
             this.PlusBtn.UseVisualStyleBackColor = true;
@@ -119,7 +193,7 @@
             // 
             // MinusBtn
             // 
-            this.MinusBtn.Location = new System.Drawing.Point(342, 297);
+            this.MinusBtn.Location = new System.Drawing.Point(255, 298);
             this.MinusBtn.Name = "MinusBtn";
             this.MinusBtn.Size = new System.Drawing.Size(81, 87);
             this.MinusBtn.TabIndex = 15;
@@ -129,16 +203,17 @@
             // 
             // msBtn
             // 
-            this.msBtn.Location = new System.Drawing.Point(90, 108);
+            this.msBtn.Location = new System.Drawing.Point(340, 203);
             this.msBtn.Name = "msBtn";
             this.msBtn.Size = new System.Drawing.Size(80, 88);
             this.msBtn.TabIndex = 14;
-            this.msBtn.Text = "MC";
+            this.msBtn.Text = "MS";
             this.msBtn.UseVisualStyleBackColor = true;
+            this.msBtn.Click += new System.EventHandler(this.msBtn_Click);
             // 
             // mrBtn
             // 
-            this.mrBtn.Location = new System.Drawing.Point(10, 108);
+            this.mrBtn.Location = new System.Drawing.Point(342, 297);
             this.mrBtn.Name = "mrBtn";
             this.mrBtn.Size = new System.Drawing.Size(78, 88);
             this.mrBtn.TabIndex = 13;
@@ -160,11 +235,11 @@
             // 
             this.ansBtn.Location = new System.Drawing.Point(171, 483);
             this.ansBtn.Name = "ansBtn";
-            this.ansBtn.Size = new System.Drawing.Size(165, 88);
+            this.ansBtn.Size = new System.Drawing.Size(79, 88);
             this.ansBtn.TabIndex = 10;
             this.ansBtn.Text = "Ans";
             this.ansBtn.UseVisualStyleBackColor = true;
-            this.ansBtn.Click += new System.EventHandler(this.ansBtn_Click);
+            this.ansBtn.Click += new System.EventHandler(this.AnsBtn_Click);
             // 
             // Btn3
             // 
@@ -256,62 +331,13 @@
             this.Btn7.UseVisualStyleBackColor = true;
             this.Btn7.Click += new System.EventHandler(this.Btn7_Click);
             // 
-            // DecBtn
-            // 
-            this.DecBtn.Location = new System.Drawing.Point(10, 483);
-            this.DecBtn.Name = "DecBtn";
-            this.DecBtn.Size = new System.Drawing.Size(78, 88);
-            this.DecBtn.TabIndex = 21;
-            this.DecBtn.Text = ".";
-            this.DecBtn.UseVisualStyleBackColor = true;
-            this.DecBtn.Click += new System.EventHandler(this.DecBtn_Click);
-            // 
-            // EvalBtn
-            // 
-            this.EvalBtn.Location = new System.Drawing.Point(428, 480);
-            this.EvalBtn.Name = "EvalBtn";
-            this.EvalBtn.Size = new System.Drawing.Size(82, 91);
-            this.EvalBtn.TabIndex = 22;
-            this.EvalBtn.Text = "=";
-            this.EvalBtn.UseVisualStyleBackColor = true;
-            this.EvalBtn.Click += new System.EventHandler(this.EvalBtn_Click);
-            // 
-            // LeftParenthesesBtn
-            // 
-            this.LeftParenthesesBtn.Location = new System.Drawing.Point(255, 296);
-            this.LeftParenthesesBtn.Name = "LeftParenthesesBtn";
-            this.LeftParenthesesBtn.Size = new System.Drawing.Size(81, 88);
-            this.LeftParenthesesBtn.TabIndex = 23;
-            this.LeftParenthesesBtn.Text = "(";
-            this.LeftParenthesesBtn.UseVisualStyleBackColor = true;
-            this.LeftParenthesesBtn.Click += new System.EventHandler(this.LeftParenthesesBtn_Click);
-            // 
-            // RightParenthesesBtn
-            // 
-            this.RightParenthesesBtn.Cursor = System.Windows.Forms.Cursors.No;
-            this.RightParenthesesBtn.Location = new System.Drawing.Point(255, 390);
-            this.RightParenthesesBtn.Name = "RightParenthesesBtn";
-            this.RightParenthesesBtn.Size = new System.Drawing.Size(81, 88);
-            this.RightParenthesesBtn.TabIndex = 24;
-            this.RightParenthesesBtn.Text = ")";
-            this.RightParenthesesBtn.UseVisualStyleBackColor = true;
-            this.RightParenthesesBtn.Click += new System.EventHandler(this.RightParenthesesBtn_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(485, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(19, 25);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "-";
-            // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 577);
+            this.ClientSize = new System.Drawing.Size(434, 577);
+            this.Controls.Add(this.ClearBtn);
+            this.Controls.Add(this.BackSpaceBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RightParenthesesBtn);
             this.Controls.Add(this.LeftParenthesesBtn);
@@ -374,6 +400,8 @@
         private OperatorBtn LeftParenthesesBtn;
         private OperatorBtn RightParenthesesBtn;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BackSpaceBtn;
+        private System.Windows.Forms.Button ClearBtn;
     }
 }
 

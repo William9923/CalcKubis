@@ -5,9 +5,7 @@ namespace Calc_Kubis
 {
     public partial class Calculator : Form
     {
-
-        string expr;
-
+        DataCollector data;
         public Calculator()
         {
             InitializeComponent();
@@ -36,21 +34,27 @@ namespace Calc_Kubis
 
             // Initialize Evaluator Button
             EvalBtn = new EvaluatorBtn();
+
+            // Initialize Memory Button
+            msBtn = new MemorySaveBtn();
+            mrBtn = new MemoryRmBtn();
         }
 
         private void CalcKubisForm_Load(object sender, EventArgs e)
         {
-            
+            // Initialize Data Collector
+            data = new DataCollector();
+            ChangeText();
         }
 
         private void ChangeText()
         {
-            ResultBox.Text = expr.Replace(" ","");
+            ResultBox.Text = data.GetExpr();
         }
 
         private void Btn7_Click(object sender, EventArgs e)
         {
-            expr += Btn7.GetNumber();
+            data.AddStringExpression(Btn7.GetNumber().ToString());
             ChangeText();
         }
 
@@ -60,13 +64,13 @@ namespace Calc_Kubis
 
         private void Btn8_Click(object sender, EventArgs e)
         {
-            expr += Btn8.GetNumber();
+            data.AddStringExpression(Btn8.GetNumber().ToString());
             ChangeText();
         }
 
         private void Btn4_Click(object sender, EventArgs e)
         {
-            expr += Btn4.GetNumber();
+            data.AddStringExpression(Btn4.GetNumber().ToString());
             ChangeText();
         }
 
@@ -77,122 +81,170 @@ namespace Calc_Kubis
 
         private void mrBtn_Click(object sender, EventArgs e)
         {
-
+            if (data.SavedValue.Count > 0)
+            {
+                data.AddStringExpression(mrBtn.DelMemory(ref data.SavedValue).ToString());
+            }
+            ChangeText();
         }
 
         private void PlusBtn_Click(object sender, EventArgs e)
         {
-            expr += " " + PlusBtn.GetOperator() + " ";
+            data.AddStringExpression(PlusBtn.GetOperator());
             ChangeText();
         }
 
         private void operatorBtn1_Click(object sender, EventArgs e)
         {
-            expr += " " + MinusBtn.GetOperator() + " ";
+            data.AddStringExpression(MinusBtn.GetOperator());
             ChangeText();
         }
 
         private void Btn0_Click(object sender, EventArgs e)
         {
-            expr += Btn0.GetNumber();
+            data.AddStringExpression(Btn0.GetNumber().ToString());
             ChangeText();
         }
 
         private void Btn1_Click(object sender, EventArgs e)
         {
-            expr += Btn1.GetNumber();
+            data.AddStringExpression(Btn1.GetNumber().ToString());
             ChangeText();
         }
 
         private void Btn2_Click(object sender, EventArgs e)
         {
-            expr += Btn2.GetNumber();
+            data.AddStringExpression(Btn2.GetNumber().ToString());
             ChangeText();
         }
 
         private void Btn3_Click(object sender, EventArgs e)
         {
-            expr += Btn3.GetNumber();
+            data.AddStringExpression(Btn3.GetNumber().ToString());
             ChangeText();
         }
 
         private void Btn5_Click(object sender, EventArgs e)
         {
-            expr += Btn5.GetNumber();
+            data.AddStringExpression(Btn5.GetNumber().ToString());
             ChangeText();
         }
 
         private void Btn6_Click(object sender, EventArgs e)
         {
-            expr += Btn6.GetNumber();
+            data.AddStringExpression(Btn6.GetNumber().ToString());
             ChangeText();
         }
 
         private void Btn9_Click(object sender, EventArgs e)
         {
-            expr += Btn9.GetNumber();
+            data.AddStringExpression(Btn9.GetNumber().ToString());
             ChangeText();
         }
 
         private void RootBtn_Click(object sender, EventArgs e)
         {
-            expr += RootBtn.GetOperator() + " ";
+            data.AddStringExpression(RootBtn.GetOperator());
             ChangeText();
         }
 
         private void PowerBtn_Click(object sender, EventArgs e)
         {
-            expr += " " + PowerBtn.GetOperator() + " ";
+            data.AddStringExpression(PowerBtn.GetOperator());
             ChangeText();
         }
 
         private void DivisorBtn_Click(object sender, EventArgs e)
         {
-            expr += " " + DivisorBtn.GetOperator() + " ";
+            data.AddStringExpression(DivisorBtn.GetOperator());
             ChangeText();
         }
 
         private void MultiplyButton_Click(object sender, EventArgs e)
         {
-            expr += " " + MultBtn.GetOperator() + " ";
+            data.AddStringExpression(MultBtn.GetOperator());
             ChangeText();
         }
 
         private void DecBtn_Click(object sender, EventArgs e)
         {
-            expr += DecBtn.GetOperator();
+            data.AddStringExpression(DecBtn.GetOperator());
             ChangeText();
         }
 
         private void EvalBtn_Click(object sender, EventArgs e)
         {
-            if (expr.Equals(""))
+            if (data.GetExpr().Equals(""))
             {
                 MessageBox.Show("Expression Empty");
             }
             else
             {
-                expr = EvalBtn.GetResultEvaluation(this.expr).ToString();
+                try
+                {
+                    if (data.GetStateAnswer())
+                    {
+                        data.SetExpr(Parser.ChangeVariable("ans", data.GetAnswer(), data.GetExpr()));
+                    }
+                    double holder = EvalBtn.GetResultEvaluation(data.GetExpr());
+                    data.SetExpr(holder.ToString());
+                    data.ChangeAnswer(holder);
+                }
+                catch
+                {
+                    data.SetExpr("0");
+                    data.ChangeAnswer(0);
+                    data.ChangeState();
+                    MessageBox.Show("Error Occured");
+                }
                 ChangeText();
             }
         }
 
         private void LeftParenthesesBtn_Click(object sender, EventArgs e)
         {
-            expr +=  LeftParenthesesBtn.GetOperator() +  " " ;
+            data.AddStringExpression(LeftParenthesesBtn.GetOperator());
             ChangeText();
         }
 
         private void RightParenthesesBtn_Click(object sender, EventArgs e)
         {
-            expr +=  " " + RightParenthesesBtn.GetOperator();
+            data.AddStringExpression(RightParenthesesBtn.GetOperator());
+            ChangeText();
+        }
+
+        private void AnsBtn_Click(object sender, EventArgs e)
+        {
+            if (data.GetStateAnswer())
+            {
+                data.AddStringExpression("ans");
+            }
             ChangeText();
         }
 
         private void ansBtn_Click(object sender, EventArgs e)
         {
-            expr += "";
+
+        }
+
+        private void ClearBtn_Click(object sender, EventArgs e)
+        {
+            data = new DataCollector();
             ChangeText();
+        }
+
+        private void BackSpaceBtn_Click(object sender, EventArgs e)
+        {
+            data.BackSpaceExpression();
+            ChangeText();
+        }
+
+        private void msBtn_Click(object sender, EventArgs e)
+        {
+            if (data.GetStateAnswer())
+            {
+                msBtn.AddItem(ref data.SavedValue, data.GetAnswer());
+            }
         }
     }
 }

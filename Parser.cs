@@ -18,6 +18,23 @@ namespace Calc_Kubis
             this.splittedExpr = Preprocess().Split();
         }
 
+        public static string ChangeVariable(string var, double digit, string expr)
+        {
+            return expr.Replace(var, digit.ToString());
+        }
+
+        private void AddSpacer()
+        {
+            expr = expr.Replace("x", " x ");
+            expr = expr.Replace("-", " - ");
+            expr = expr.Replace("+", " + ");
+            expr = expr.Replace("÷", " ÷ ");
+            expr = expr.Replace("^", " ^ ");
+            expr = expr.Replace("(", "( ");
+            expr = expr.Replace("√", "√ ");
+            expr = expr.Replace(")", " )");
+        }
+
         public string GetExpr()
         {
             return this.expr;
@@ -57,6 +74,7 @@ namespace Calc_Kubis
         // Internal Preprocessing Expression Process
         private string Preprocess()
         {
+            AddSpacer();
             string PreprocessedString;
             string[] PreprocessedSplitter;
 
