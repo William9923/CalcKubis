@@ -54,6 +54,9 @@ namespace Calc_Kubis
             if (data.GetStateAnswer())
             {
                 ansLabel.Text = data.GetAnswer().ToString();
+            } else
+            {
+                ansLabel.Text = "0";
             }
         }
 
