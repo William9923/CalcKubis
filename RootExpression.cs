@@ -12,7 +12,7 @@ namespace Calc_Kubis
 
         public override double Solve()
         {
-            if (this.x.Solve() < 0)
+            if (this.x.Solve() < 0)     // lix, ini throw yang Math Error , Imaginary something itu ya
             {
                 throw new System.ArgumentException();
             }

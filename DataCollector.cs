@@ -29,16 +29,19 @@ namespace Calc_Kubis
         // methods
         public void AddStringExpression(string s)
         {
-            if (StartState)
+            if (Expr.Length < 19)
             {
-                if (Parser.CheckOperand(s))
+                if (StartState)
                 {
-                    this.Expr = "";
+                    if (Parser.CheckOperand(s))
+                    {
+                        this.Expr = "";
+                    }
+                    ChangeState();
                 }
-                ChangeState();
+                this.Expr += s;
+                expectFirstInput = false;
             }
-            this.Expr += s;
-            expectFirstInput = false;
         }
 
         public bool getExpectation()

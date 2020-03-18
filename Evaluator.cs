@@ -39,7 +39,6 @@ namespace Calc_Kubis
                 {
                     CheckStateOperand();
                     oprStack.Push(CreateOpr(token));
-
                 }
                 else if (Parser.CheckBinaryOperator(token))
                 {
@@ -52,7 +51,6 @@ namespace Calc_Kubis
                     }
                     oprStack.Push(oprHolder);
                     ChangeState();
-
                 }
                 else if (Parser.CheckParentheses(token))
                 {
@@ -73,14 +71,14 @@ namespace Calc_Kubis
                             {
                                 oprStack.Pop();
                             }
-                            else
+                            else  // lix gantiin ini, kalo masuk sini, brarti jumlah kurungnya ga pas, kasi masukin error yang Error Jumlah Kurung lix
                             {
                                 throw new System.ArgumentException();
                             }
                             break;
                     }
                 }
-                else
+                else        // ini harusnya ga masuk, tapi kalo ampe masuk sini, brarti tokennya ga ada dalam operator yang di define, kasi syntax error lix
                 {
                     Console.WriteLine(token);
                      throw new System.ArgumentException();
@@ -88,13 +86,13 @@ namespace Calc_Kubis
             }
             CheckStateOperator();
             // Finishing Evaluation Process
-            while (oprStack.Count != 0 && exprStack.Count != 0)   // evaluate all leftie
+            while (oprStack.Count != 0 && exprStack.Count != 0)   
             {
                 oprHolder = oprStack.Pop();
                 CreateExpr(oprHolder, ref exprStack);
             }
 
-            if (oprStack.Count > 0 || exprStack.Count > 1)
+            if (oprStack.Count > 0 || exprStack.Count > 1)  // kalo masuk sini, brarti ada kemungkinan kelebihan operator, kasi syntax error lix
             {
                 throw new System.ArgumentException();
             }
@@ -113,7 +111,7 @@ namespace Calc_Kubis
                 case "√": return new RootOpr(); break;
                 case "(": return new ParenthesesOpr("("); break;
                 case ")": return new ParenthesesOpr(")"); break;
-                default: throw new System.ArgumentException();
+                default: throw new System.ArgumentException();          // ini, brarti operator ga ke define di sistem, kasi syntax error lix
             }
         }
 
@@ -140,14 +138,14 @@ namespace Calc_Kubis
                     exprStack.Push(new NegativeExpression(ex2)); break;
                 case "√":
                     exprStack.Push(new RootExpression(ex2)); break;
-                default:
+                default:                            // ini berarti ga ke define di system, walaupun seharusnya ga mungkin kena, kasi syntax error/operator error lix
                     throw new System.ArgumentException();
             }
         }
 
         private void CheckStateOperand()
         {
-            if (!this.expectOperand)
+            if (!this.expectOperand)        // Kalo ini kena, kasi syntax error
             {
                 throw new System.ArgumentException();
             }
@@ -155,7 +153,7 @@ namespace Calc_Kubis
 
         private void CheckStateOperator()
         {
-            if (this.expectOperand)
+            if (this.expectOperand)         // kalo ini kena, kasi syntax error
             {
                 throw new System.ArgumentException();
             }

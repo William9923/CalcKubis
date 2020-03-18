@@ -13,7 +13,7 @@ namespace Calc_Kubis
         public override double Solve()
         {
 
-            if (this.y.Solve() == 0.0)
+            if (this.y.Solve() == 0.0)          // gantiin exception ini lix
             {
                 throw new System.ArgumentException();
             }
