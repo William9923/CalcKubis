@@ -13,6 +13,7 @@ namespace Calc_Kubis
         private string Expr;
         private bool StartState;
         private bool HasSavedAnswer;
+        private bool expectFirstInput;
 
         // default value
         public DataCollector()
@@ -22,6 +23,7 @@ namespace Calc_Kubis
             StartState = true;
             Answer = 0;
             Expr = "0";
+            expectFirstInput = true; 
         }
 
         // methods
@@ -36,7 +38,12 @@ namespace Calc_Kubis
                 ChangeState();
             }
             this.Expr += s;
-            
+            expectFirstInput = false;
+        }
+
+        public bool getExpectation()
+        {
+            return expectFirstInput;
         }
 
         public void BackSpaceExpression()
@@ -83,6 +90,7 @@ namespace Calc_Kubis
         {
             this.Answer = ans;
             HasSavedAnswer = true;
+            expectFirstInput = true;
         }
 
         public bool GetStateAnswer()

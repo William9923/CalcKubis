@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Calc_Kubis
 {
     public partial class MemoryRmBtn : Button

@@ -49,7 +49,12 @@ namespace Calc_Kubis
 
         private void ChangeText()
         {
-            ResultBox.Text = data.GetExpr();
+            
+            exprLabel.Text = data.GetExpr();
+            if (data.GetStateAnswer())
+            {
+                ansLabel.Text = data.GetAnswer().ToString();
+            }
         }
 
         private void Btn7_Click(object sender, EventArgs e)
@@ -187,17 +192,20 @@ namespace Calc_Kubis
                         data.SetExpr(Parser.ChangeVariable("ans", data.GetAnswer(), data.GetExpr()));
                     }
                     double holder = EvalBtn.GetResultEvaluation(data.GetExpr());
-                    data.SetExpr(holder.ToString());
                     data.ChangeAnswer(holder);
+                    ChangeText();
+                    data.SetExpr(holder.ToString());
+                    
                 }
                 catch
                 {
                     data.SetExpr("0");
                     data.ChangeAnswer(0);
                     data.ChangeState();
-                    MessageBox.Show("Error Occured");
+
+                    MessageBox.Show("Error Occured", "Error Happened"); // first argument : the error message, the second argument : the error header message
+                    ChangeText();
                 }
-                ChangeText();
             }
         }
 

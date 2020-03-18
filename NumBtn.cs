@@ -5,10 +5,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using MaterialSkin.Controls;
+using System.Windows.Forms;
 namespace Calc_Kubis
 {
-    public partial class NumBtn : System.Windows.Forms.Button
+    public partial class NumBtn : Button
     {
         // instance variable
         private int number;
