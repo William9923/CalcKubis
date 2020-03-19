@@ -33,7 +33,7 @@ namespace Calc_Kubis
             {
                 if (StartState)
                 {
-                    if (Parser.CheckOperand(s))
+                    if (Parser.CheckOperand(s) || Parser.CheckUnaryOperator(s))
                     {
                         this.Expr = "";
                     }
