@@ -15,7 +15,7 @@ namespace Calc_Kubis
 
             if (this.y.Solve() == 0.0)          // gantiin exception ini lix
             {
-                throw new System.ArgumentException();
+                throw new DivideByZeroException(this.x.Solve());
             }
             return this.x.Solve() / this.y.Solve();
         }
