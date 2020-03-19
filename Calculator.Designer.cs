@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculator));
             this.exprLabel = new System.Windows.Forms.Label();
             this.BackSpaceBtn = new System.Windows.Forms.Button();
             this.ClearBtn = new System.Windows.Forms.Button();
+            this.ansLabel = new System.Windows.Forms.Label();
             this.RightParenthesesBtn = new Calc_Kubis.OperatorBtn(this.components);
             this.LeftParenthesesBtn = new Calc_Kubis.OperatorBtn(this.components);
             this.EvalBtn = new Calc_Kubis.EvaluatorBtn(this.components);
@@ -55,7 +57,6 @@
             this.Btn4 = new Calc_Kubis.NumBtn(this.components);
             this.Btn8 = new Calc_Kubis.NumBtn(this.components);
             this.Btn7 = new Calc_Kubis.NumBtn(this.components);
-            this.ansLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // exprLabel
@@ -92,6 +93,15 @@
             this.ClearBtn.Text = "C";
             this.ClearBtn.UseVisualStyleBackColor = false;
             this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
+            // 
+            // ansLabel
+            // 
+            this.ansLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ansLabel.Location = new System.Drawing.Point(13, 92);
+            this.ansLabel.Name = "ansLabel";
+            this.ansLabel.Size = new System.Drawing.Size(443, 85);
+            this.ansLabel.TabIndex = 28;
+            this.ansLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // RightParenthesesBtn
             // 
@@ -390,15 +400,6 @@
             this.Btn7.UseVisualStyleBackColor = false;
             this.Btn7.Click += new System.EventHandler(this.Btn7_Click);
             // 
-            // ansLabel
-            // 
-            this.ansLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ansLabel.Location = new System.Drawing.Point(13, 92);
-            this.ansLabel.Name = "ansLabel";
-            this.ansLabel.Size = new System.Drawing.Size(443, 85);
-            this.ansLabel.TabIndex = 28;
-            this.ansLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -436,6 +437,7 @@
             this.Controls.Add(this.Btn8);
             this.Controls.Add(this.Btn7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Calculator";
             this.Text = "A Simple Calculator";
