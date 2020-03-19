@@ -58,6 +58,7 @@ namespace Calc_Kubis
             {
                 ansLabel.Text = "0";
             }
+            Console.WriteLine(data.GetExpr());
         }
 
         private void Btn7_Click(object sender, EventArgs e)

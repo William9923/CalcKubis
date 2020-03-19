@@ -109,7 +109,13 @@ namespace Calc_Kubis
 
         public static bool CheckOperand(string exe)
         {
-            return (double.TryParse(exe, out _));
+            
+            if (Double.TryParse(exe, out _))
+            {
+                int count = exe.Count(f => f == '.');
+                return count <= 1;
+            }
+            return false;
         }
     }
 }

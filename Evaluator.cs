@@ -27,13 +27,13 @@ namespace Calc_Kubis
 
             foreach (string token in tokenList)
             {
+                Console.WriteLine("Token" + token);
                 if (Parser.CheckOperand(token))
                 {
                     CheckStateOperand();
                     numHolder = Double.Parse(token);
                     exprStack.Push(new TerminalExpression(numHolder));
                     ChangeState();
-
                 }
                 else if (Parser.CheckUnaryOperator(token))
                 {
@@ -82,7 +82,7 @@ namespace Calc_Kubis
                 else        //Token tidak terdefinisi
                 {
                     Console.WriteLine(token);
-                     throw new UndefinedToken(token);
+                    throw new UndefinedToken(token);
                 }
             }
             CheckStateOperator();
