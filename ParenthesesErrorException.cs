@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calc_Kubis
 {
-    class ParenthesesErrorException : BaseException
+    class ParenthesesErrorException : SyntaxErrorException
     {
         public override string errorMessage()
         {

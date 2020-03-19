@@ -200,9 +200,7 @@ namespace Calc_Kubis
                     data.SetExpr(holder.ToString());
                     
                 }
-                catch (MathErrorException error)       // lix, ini nanti catch jadi 1 ato 2 sabeb
-                            // kalo catch 2, nanti catch antara syntax error dengan math error, terus kasi title message box nya yang beda aja
-                            // kalo mao bikin 1 juga gapapa, tapi nanti message box nya yang jelas ya ... ps: Format message boxnya kek yang dibawah (cari inet aja kalo ga paham :))
+                catch (MathErrorException error)
                 {
                     data.SetExpr("0");
                     data.ChangeAnswer(0);

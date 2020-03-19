@@ -67,14 +67,15 @@ namespace Calc_Kubis
                                 oprHolder = oprStack.Pop();
                                 CreateExpr(oprHolder, ref exprStack);
                             }
+                            if (oprStack.Count == 0)
+                            {
+                                throw new ParenthesesErrorException();
+                            }
                             if (oprStack.Peek().Show() == "(")
                             {
                                 oprStack.Pop();
                             }
-                            else  //Banyaknya kurung buka dan kurung tutup tidak sesuai
-                            {
-                                throw new ParenthesesErrorException();
-                            }
+                            
                             break;
                     }
                 }
@@ -92,7 +93,7 @@ namespace Calc_Kubis
                 CreateExpr(oprHolder, ref exprStack);
             }
 
-            if (oprStack.Count > 0 || exprStack.Count > 1)  // kalo masuk sini, brarti ada kemungkinan kelebihan operator, kasi syntax error lix
+            if (oprStack.Count > 0 || exprStack.Count > 1)  // Syntax error
             {
                 throw new SyntaxErrorException();
             }
@@ -111,7 +112,7 @@ namespace Calc_Kubis
                 case "√": return new RootOpr(); break;
                 case "(": return new ParenthesesOpr("("); break;
                 case ")": return new ParenthesesOpr(")"); break;
-                default: throw new SyntaxErrorException();          // ini, brarti operator ga ke define di sistem, kasi syntax error lix
+                default: throw new UndefinedToken(exe);          //Undefined Token
             }
         }
 
