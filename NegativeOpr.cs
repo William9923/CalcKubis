@@ -8,6 +8,6 @@ namespace Calc_Kubis
 {
     class NegativeOpr : Opr
     {
-        public NegativeOpr() : base(4, "-") { }
+        public NegativeOpr() : base(4, ";") { }
     }
 }

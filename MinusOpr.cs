@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Calc_Kubis
 {
-    class RootOpr : Opr
+    class MinusOpr : Opr
     {
-        public RootOpr() : base(3, "√") { }
+        public MinusOpr() : base(1, "-") { }
     }
 }

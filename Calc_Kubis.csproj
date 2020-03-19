@@ -53,6 +53,8 @@
     <Compile Include="BinaryExpression.cs" />
     <Compile Include="AddExpression.cs" />
     <Compile Include="AddOpr.cs" />
+    <Compile Include="MinusExpression.cs" />
+    <Compile Include="MinusOpr.cs" />
     <Compile Include="DivideByZeroException.cs" />
     <Compile Include="ImaginaryException.cs" />
     <Compile Include="MathErrorException.cs" />

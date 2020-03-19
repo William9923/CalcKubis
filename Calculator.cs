@@ -28,7 +28,7 @@ namespace Calc_Kubis
             DivisorBtn = new OperatorBtn("÷");
             MultBtn = new OperatorBtn("x");
             PowerBtn = new OperatorBtn("^");
-            DecBtn = new OperatorBtn(".");
+            DecBtn = new OperatorBtn(",");
             LeftParenthesesBtn = new OperatorBtn("(");
             RightParenthesesBtn = new OperatorBtn(")");
 

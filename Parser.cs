@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace Calc_Kubis
         {
             this.expr = expr;
             this.splittedExpr = Preprocess().Split();
+            PrintParseResult();
         }
 
         public static string ChangeVariable(string var, double digit, string expr)
@@ -23,16 +25,46 @@ namespace Calc_Kubis
             return expr.Replace(var, digit.ToString());
         }
 
+        private void CreateUnaryNeg()
+        {
+            ArrayList al = new ArrayList();
+            for (int i = 0; i < expr.Length; i++)
+            {
+                if (expr[i] == '-')
+                {
+                    al.Add(i);
+                }
+            }
+            foreach (int elem in al)
+            {
+                if (elem == 0)
+                {
+                    expr = expr.Remove(elem, 1).Insert(elem, ";");
+                }
+                else
+                {
+                    if (elem != expr.Length - 1)
+                    {
+                        if ((CheckBinaryOperator(expr[elem - 1].ToString()) || expr[elem - 1] == '(') && (expr[elem + 1] == '√' || CheckOperand(expr[elem + 1].ToString())))
+                        {
+                            expr = expr.Remove(elem, 1).Insert(elem, ";");
+                        }
+                    }
+                }
+            }
+        }
+
         private void AddSpacer()
         {
             expr = expr.Replace("x", " x ");
+            expr = expr.Replace(";", "; ");
             expr = expr.Replace("-", " - ");
             expr = expr.Replace("+", " + ");
             expr = expr.Replace("÷", " ÷ ");
             expr = expr.Replace("^", " ^ ");
-            expr = expr.Replace("(", "( ");
             expr = expr.Replace("√", "√ ");
             expr = expr.Replace(")", " )");
+            expr = expr.Replace("(", "( ");
         }
 
         public string GetExpr()
@@ -74,13 +106,14 @@ namespace Calc_Kubis
         // Internal Preprocessing Expression Process
         private string Preprocess()
         {
+            CreateUnaryNeg();
             AddSpacer();
+
             string PreprocessedString;
             string[] PreprocessedSplitter;
 
             PreprocessedString = this.expr.Trim();
             PreprocessedString = PreprocessedString.Replace("-  -", "+");
-            PreprocessedString = PreprocessedString.Replace(" -", " + -");
             PreprocessedSplitter = PreprocessedString.Split(' ');
             PreprocessedString = string.Join(" ", PreprocessedSplitter);
             return PreprocessedString;
@@ -89,7 +122,7 @@ namespace Calc_Kubis
         // Static Method for parser
         public static bool CheckOperator(string exe)
         {
-            return (exe.Equals("(") || exe.Equals(")") || exe.Equals("x") || exe.Equals("+") || exe.Equals("÷") || exe.Equals("^") || exe.Equals("√"));
+            return (exe.Equals("(") || exe.Equals(")") || exe.Equals("x") || exe.Equals("+") || exe.Equals("÷") || exe.Equals("^") || exe.Equals("√") || exe.Equals(";") || exe.Equals("-"));
         }
 
         public static bool CheckParentheses(string exe)
@@ -99,23 +132,18 @@ namespace Calc_Kubis
 
         public static bool CheckUnaryOperator(string exe)
         {
-            return (exe.Equals("-") || exe.Equals("√"));
+            return (exe.Equals(";") || exe.Equals("√"));
         }
 
         public static bool CheckBinaryOperator(string exe)
         {
-            return (exe.Equals("+") || exe.Equals("÷") || exe.Equals("^") || exe.Equals("x"));
+            return (exe.Equals("+") || exe.Equals("÷") || exe.Equals("^") || exe.Equals("x") || exe.Equals("-"));
         }
 
         public static bool CheckOperand(string exe)
         {
-            
-            if (Double.TryParse(exe, out _))
-            {
-                int count = exe.Count(f => f == '.');
-                return count <= 1;
-            }
-            return false;
+
+            return double.TryParse(exe, out _);
         }
     }
 }

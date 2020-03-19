@@ -27,7 +27,6 @@ namespace Calc_Kubis
 
             foreach (string token in tokenList)
             {
-                Console.WriteLine("Token" + token);
                 if (Parser.CheckOperand(token))
                 {
                     CheckStateOperand();
@@ -81,7 +80,6 @@ namespace Calc_Kubis
                 }
                 else        //Token tidak terdefinisi
                 {
-                    Console.WriteLine(token);
                     throw new UndefinedToken(token);
                 }
             }
@@ -105,14 +103,15 @@ namespace Calc_Kubis
             switch (exe)
             {
                 case "+": return new AddOpr(); break;
-                case "-": return new NegativeOpr(); break;
+                case "-": return new MinusOpr(); break;
                 case "x": return new MultOpr(); break;
                 case "÷": return new DivOpr(); break;
                 case "^": return new PowerOpr(); break;
                 case "√": return new RootOpr(); break;
                 case "(": return new ParenthesesOpr("("); break;
                 case ")": return new ParenthesesOpr(")"); break;
-                default: throw new UndefinedToken(exe);          //Undefined Token
+                case ";": return new NegativeOpr(); break;
+                default: throw new UndefinedToken(exe);
             }
         }
 
@@ -136,10 +135,13 @@ namespace Calc_Kubis
                     ex1 = exprStack.Pop();
                     exprStack.Push(new DivExpression(ex1, ex2)); break;
                 case "-":
-                    exprStack.Push(new NegativeExpression(ex2)); break;
+                    ex1 = exprStack.Pop();
+                    exprStack.Push(new MinusExpression(ex1, ex2)); break;
                 case "√":
                     exprStack.Push(new RootExpression(ex2)); break;
-                default:                            //Syntax error
+                case ";":
+                    exprStack.Push(new NegativeExpression(ex2)); break;
+                default:
                     throw new SyntaxErrorException();
             }
         }
