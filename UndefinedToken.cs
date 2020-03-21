@@ -10,6 +10,11 @@ namespace Calc_Kubis
     {
         protected string token;
 
+        public string getToken()
+        {
+            return this.token;
+        }
+
         public UndefinedToken(string token)
         {
             this.token = token;

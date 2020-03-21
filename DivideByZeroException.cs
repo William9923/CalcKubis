@@ -8,14 +8,19 @@ namespace Calc_Kubis
 {
     class DivideByZeroException : MathErrorException
     {
-        protected double dividend;
+        private double dividend;
+
+        public double getDivident()
+        {
+            return this.dividend;
+        }
         public DivideByZeroException(double _dividend)
         {
             this.dividend = _dividend;
         }
         public override string errorMessage()
         {
-            return ($"{this.dividend} is divided by zero\n");
+            return ($"{this.dividend} is divided by zero\n"); ;
         }
     }
 }

@@ -9,7 +9,6 @@ namespace Calc_Kubis
 {
     class Parser
     {
-
         string expr;
         string[] splittedExpr;
 

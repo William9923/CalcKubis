@@ -79,6 +79,7 @@ namespace Calc_Kubis
         {
             return StartState;
         }
+
         public void ChangeState()
         {
             StartState = !StartState;
