@@ -21,21 +21,21 @@ These instructions will get you a copy of the project up and running on your loc
 ## Visuals
 ### Program GUI
 
-
+<kbd>
 <img src="images/tampilan-awal.JPG" width="200">
-
+</kbd>
 
 ### Solving Math Expression
 
-
+<kbd>
 <img src="images/ekspresi-benar.JPG" width="200">
-
+</kbd>
 
 ### Wrong Inputs
 
-
-<img src="images/ekspresi-error.JPG" width="200">
-
+<kbd>
+ <img src="images/ekspresi-error.JPG" width="200">
+</kbd>
 
 ## Contributing
 1. [William Ong](https://github.com/William9923)
