@@ -15,8 +15,15 @@ These instructions will get you a copy of the project up and running on your loc
 [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 ## Usage
+
+### Using Visual Studio
 1. Double click CalcKubis.sln or right click CalcKubis.sln -> open with Visual Studio
 2. Click Start
+
+### Using file.exe
+1. Open folder bin
+2. Run Calc_Kubis.exe
+
 
 ## Examples
 ### Program GUI
