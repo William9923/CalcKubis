@@ -22,19 +22,19 @@ These instructions will get you a copy of the project up and running on your loc
 ### Program GUI
 
 <kbd>
-<img src="images/tampilan-awal.JPG" width="200">
+<img src="images/tampilan-awal.JPG" width="300">
 </kbd>
 
 ### Solving Math Expression
 
 <kbd>
-<img src="images/ekspresi-benar.JPG" width="200">
+<img src="images/ekspresi-benar.JPG" width="300">
 </kbd>
 
 ### Wrong Inputs
 
 <kbd>
- <img src="images/ekspresi-error.JPG" width="200">
+ <img src="images/ekspresi-error.JPG" width="300">
 </kbd>
 
 ## Contributing
