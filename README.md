@@ -18,6 +18,25 @@ These instructions will get you a copy of the project up and running on your loc
 1. Double click CalcKubis.sln or right click CalcKubis.sln -> open with Visual Studio
 2. Click Start
 
+## Visuals
+### Program GUI
+
+
+<img src="images/tampilan-awal.JPG" width="200">
+
+
+### Solving Math Expression
+
+
+<img src="images/ekspresi-benar.JPG" width="200">
+
+
+### Wrong Inputs
+
+
+<img src="images/ekspresi-error.JPG" width="200">
+
+
 ## Contributing
 1. [William Ong](https://github.com/William9923)
 2. [Aufa Fadhlurohman](https://github.com/aufaf29)
