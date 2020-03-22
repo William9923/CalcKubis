@@ -9,7 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 1. Windows Operating System\
-Follow this link: [Windows 10](https://www.microsoft.com/en-us/software-download/windows10)
+[Windows 10](https://www.microsoft.com/en-us/software-download/windows10)
 
 2. Visual Studio (any edition)\
 [Visual Studio](https://visualstudio.microsoft.com/downloads/)
