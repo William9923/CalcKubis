@@ -1,4 +1,4 @@
-# CalcKubis
+# CalculatorNET
 
 CalcKubis is a simple calculator application using winforms developed with .NET Framework made to assist cabbage merchant whose name is Fahmi. Fahmi needs the calculator to calculate how much he needs to charge Avatar Aang for breaking his cabbage because his old calculator was bought by IF 2018 student.
 
